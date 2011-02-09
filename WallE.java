@@ -25,35 +25,44 @@ public class WallE {
 			Motor.B.stop();
 			Motor.C.stop();
 			
-			//Check the distance in 3 direction and go in the way with the most space
+			//Check the distances in 3 directions and choose the way with the most space
 			int a1, a2, a3 = 0;
+			int b1, b2, b3 = 0;
+			int c1, c2, c3 = 0;
 			Motor.A.rotateTo(-90);
 			try{Thread.sleep(1000);}catch(Exception e) {}
-			a1 = sonic.getDistance();
+			a1 = sonic.getDistance(); //Should be replaced with one getDistances() that saves 8 values to an array
+			a2 = sonic.getDistance();
+			a3 = sonic.getDistance();
+			a1 = (a1 + a2 + a3) / 3; //Mean value for more accuracy
 			if(a1 < 83) {
 				Sound.beep();
 			}
 			Motor.A.rotateTo(0);
 			try{Thread.sleep(1000);}catch(Exception e) {}
-			a2 = sonic.getDistance();
-			if(a2 < 83) {
+			b1 = sonic.getDistance();
+			b2 = sonic.getDistance();
+			b3 = sonic.getDistance();
+			b1 = (b1 + b2 + b3) / 3; //Mean value for more accuracy
+			if(b2 < 83) {
 				Sound.beep();
 			}
 			Motor.A.rotateTo(90);
 			try{Thread.sleep(1000);}catch(Exception e) {}
-			a3 = sonic.getDistance();
-			if(a3 < 83) {
+			c1 = sonic.getDistance();
+			c2 = sonic.getDistance();
+			c3 = sonic.getDistance();
+			c1 = (c1 + c2 + c3) / 3; //Mean value for more accuracy
+			if(c3 < 83) {
 				Sound.beep();
 			}
 			
-			if(a1 >= a2 && a1 >= a3) {
+			if(a1 > a2 && a1 > a3) { //Most space to the left, rotate left
 				rotateInPlace(-251);
 			}
-			else if(a3 >= a1 && a3 >= a2) {
+			else if(a3 > a1 && a3 > a2) { //Most space to the right, rotate right
 				rotateInPlace(251);
 			}
-			//driveForward(1000);
-			//rotateInPlace(503);
         
         	// Handle termination of program
         	if (Button.ESCAPE.isPressed()) {
