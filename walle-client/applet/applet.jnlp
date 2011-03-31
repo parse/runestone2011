@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="" href="">
+    <information>
+        <title>applet</title>
+        <vendor>Runestone TEAM14</vendor>
+    </information>
+    <resources>
+        <!-- Application Resources -->
+        <j2se version="1.6+"
+              href="http://java.sun.com/products/autodl/j2se" />
+        <jar href="ClientGUI.jar" main="false" />
+
+    </resources>
+    <applet-desc 
+         name="Applet"
+         main-class="ClientGUI"
+         width="1000"
+         height="600">
+     </applet-desc>
+     <security>
+	<all-permissions/>
+     <security/>
+     <update check="background"/>
+</jnlp>	
